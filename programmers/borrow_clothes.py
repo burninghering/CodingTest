@@ -1,47 +1,14 @@
 def solution(n, lost, reserve):
-  
+    answer = 0
+    reserve2=[r for r in reserve if r not in lost]
+    lost2=[l for l in lost if l not in reserve]
     
-  borrowed=[]
-  d=[False]*(n)
-
-  for i in reserve:
-    if i not in lost:
-      borrowed.append(i)
-  
-  if len(borrowed)==0:
-    print(0)
-    exit()
-  
-  for i in borrowed:
-    if i==1:
-      d[i]=True
-      d[1]=True
-    else:
-      d[i]=True
-      if d[i-1]:
-        d[i+1]=True
-      else:
-        d[i-1]=True
-
-  cnt=0
-  answer=0
-  nocnt=0
-  
-  for i in range(len(d)):
-    if d[i]:
-      cnt+=1
-    else:
-      nocnt+=1
-
-  alr=n-nocnt
-  answer=alr+cnt
-  return answer
-  
-                
-n=3
-reserve=[1]
-lost=	[3]  
-print(solution(n,lost,reserve))
-
+    for r in reserve2:
+        if r-1 in lost2:
+            lost2.remove(r-1)
+        elif r+1 in lost2:
+            lost2.remove(r+1)
+    answer=n-len(lost2)
+    return answer
 
 #https://programmers.co.kr/learn/courses/30/lessons/42862

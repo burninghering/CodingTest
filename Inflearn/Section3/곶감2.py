@@ -8,7 +8,7 @@ for i in range(m):
             a[h-1].append(a[h-1].pop(0))
     else:
         for _ in range(k):
-            a[h-1].insert(0, a[h-1].pop())
+            a[h-1].insert(0, a[h-1].pop()) #insert(a,b) -> 인덱스 a 위치에 b를 넣는다
 
 res=0
 s=0

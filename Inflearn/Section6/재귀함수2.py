@@ -1,11 +1,17 @@
-import sys
-sys.stdin=open("input.txt", "r")
-def DFS(x):
-    if x==0:
-        return
-    else:
-        DFS(x//2)
-        print(x%2, end='')
+#재귀 함수는 스택 구조로 되어있다.
+#반복문의 효과를 냄 -> 반복문의 대체재이다.
+#반복문을 쓰면 효율이 떨어져서 재귀함수를 쓴다.
 
-n=int(input())
-DFS(n)
+#재귀함수가 작동 될 때, 스택 메모리에 매개변수와 그 값을 기록한다.(지역변수도)
+#그리고 복귀 주소도 함께 기록한다. 
+
+def DFS(x):
+    if x>0:
+        DFS(x-1)
+        print(x,end=' ')
+
+
+
+if __name__=="__main__":
+    n=int(input())
+    DFS(n)
